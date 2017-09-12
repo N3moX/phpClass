@@ -90,7 +90,6 @@
 			$st->execute(array($product_id, $product_name, $product_desc, $product_type, $product_created_date, $product_modified_date, $product_created_ip, $product_modified_ip));
 			$db = null;
 		}
-sfsafasfasfas
 
 	}//end of class
  ?>

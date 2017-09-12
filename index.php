@@ -107,8 +107,6 @@
 
 		echo "Successfully added!";
 
-
-
 	}//end of if
 
  ?>
