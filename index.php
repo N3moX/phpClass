@@ -2,39 +2,37 @@
 <html>
 <head>
 	<title>Add Products</title>
-    <script src="../nathan/jquery/jquery.min.js"></script>
-    <script src="../nathan/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../nathan/css/bootstrap.min.css">	
+    <script src="../phpClass/jquery/jquery.min.js"></script>
+    <script src="../phpClass/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../phpClass/css/bootstrap.min.css">	
 </head>
 <body>
 	<br><br>
 	<div class="container" style="al">
 		<form method= "POST">
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<h3>Register a product</h3>						
+				<div class="row">
+					<div class="col">
+						<h3>Register a product</h3>
+					</div>
+					<div class="col">
+						<a href="product_list.php" >Product Lists</a>	
+					</div>
+					<div class="col">
+						
+					</div>
 				</div>
-
 			</div>
 			<div class="form-group">
 				<div class="col-md-6">
-					<input id="fn" name="p_name" type="text" placeholder="name" class="form-control input-md" required="">
+					<input id="fn" name="p_name" type="text" placeholder="Product name" class="form-control input-md" required="">
 				</div>
 			</div>
-			<br>
 			<div class="form-group">
 				<div class="col-md-6">
 					<input id="fn" name="p_desc" type="text" placeholder="description" class="form-control input-md" required="">
 				</div>
-			</div>
-		 	<br>
-<!-- 		 	<div class="form-group">
-		  		<div class="col-md-6">
-		  			<input id="fn" name="p_type" type="text" placeholder="type" class="form-control input-md" required="">
-		  		</div>
-		 	</div> -->	
-		 	<br>
-
+			</div>	
 	 		<div class="form-group">
 				 <div class="col-md-2">
 					<select class="form-control" name="p_type" required="">
@@ -46,17 +44,9 @@
 					</select>
 				</div>
 			</div>
-		 	<br>
-<!-- 			<div class="form-group">
-				<div class="col-md-3">
-					<input id="fn" name="birthdate" type="date" placeholder="birthdate" class="form-control input-md" required="">
-			  </div>
-			</div>	
-			<br> -->
 		  	<div class="form-group"> 
 		    	<div class="col-sm-offset-2 col-sm-10">
-		    		<input name="register" type="submit" class="btn btn-info btn-lg" value="Register">
-		      		<a href="user_list.php" >&lt;&lt;&nbsp;Registered users&nbsp;&gt;&gt;</a>
+		    		<input name="register" type="submit" class="btn btn-info btn-md" value="Register">
 		    	</div>
 		  	</div>
 		</form>
@@ -71,7 +61,7 @@
 
 	//Assigning values
 	if(isset($_POST['register'])){
-		$p_id = uniqid();
+		$p_id = uniqid(rand(1000,1000000));
 		$p_name = trim($_POST['p_name']);
 		$p_desc = trim($_POST['p_desc']);
 		$p_type = trim($_POST['p_type']);

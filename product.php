@@ -91,5 +91,25 @@
 			$db = null;
 		}
 
+		function getAllProducts(){
+			$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+			$sql = "SELECT * FROM products ORDER BY id DESC";
+			$st = $db->prepare($sql);
+			$st->execute();
+			$products = $st->fetchAll();
+			$db = null;
+			return $products;
+		}
+		function get_products($limit, $offset){	
+			$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+			$sql = "SELECT * FROM products ORDER BY id DESC LIMIT $offset, $limit";
+			$st = $db->prepare($sql);
+			$st->execute();
+			$products = $st->fetchAll();
+			$db = null;
+			return $products;
+		}
+
+
 	}//end of class
  ?>
