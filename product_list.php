@@ -15,6 +15,12 @@
 </head>
 <body>
 	<div class="container">
+		<br>
+		<a href="index.php">Registration form</a>	|
+  		<a href="search.php">Search a user</a>	
+  		<br><br>	
+ 		<h2>User list</h2>
+ 		<br>
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
