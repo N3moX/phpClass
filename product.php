@@ -9,6 +9,22 @@
 		private $product_created_ip;
 		private $product_modified_ip;
 
+		private $con = null;
+
+		public function __construct(){
+			$this->product_id = "";
+			$this->product_id= "";
+			$this->product_name= "";
+			$this->product_desc= "";
+			$this->product_type= "";
+			$this->product_created_date= "";
+			$this->product_modified_date= "";
+			$this->product_created_ip= "";
+			$this->product_modified_ip= "";
+
+			$this->con = $this->db();
+		}
+
 		//display properties
 		function display(){
 			echo $this->product_id."<br>";
@@ -82,34 +98,42 @@
 
 		//database functions CRUD
 
-		function addProduct($product_id, $product_name, $product_desc, $product_type, $product_created_date, $product_modified_date, $product_created_ip, $product_modified_ip){
-			$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+		function db(){
+			try {
+				$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+				echo "Connected to Database!";
+				return $db;
+			} catch (PDOException $e) {
+				echo "Failed Connection".'<br>'.$e;
+			}
+		}
+
+		function addProduct($product_id, $product_name, $product_desc, $product_type, $product_created_date, $product_modified_date, $product_created_ip, $product_modified_ip){			
 			$sql = "INSERT INTO products(product_id, product_name, product_desc, product_type, product_created_date, product_modified_date, product_created_ip, product_modified_ip) 
 					VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-			$st = $db->prepare($sql);
+			$st = $this->con->prepare($sql);
 			$st->execute(array($product_id, $product_name, $product_desc, $product_type, $product_created_date, $product_modified_date, $product_created_ip, $product_modified_ip));
 			$db = null;
 		}
 
 		function getAllProducts(){
-			$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+			
 			$sql = "SELECT * FROM products ORDER BY id DESC";
-			$st = $db->prepare($sql);
+			$st = $this->con->prepare($sql);
 			$st->execute();
 			$products = $st->fetchAll();
 			$db = null;
 			return $products;
 		}
 		function get_products($limit, $offset){	
-			$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
+			//$db = new PDO("mysql:host=localhost;dbname=my_db","root","admin123");
 			$sql = "SELECT * FROM products ORDER BY id DESC LIMIT $offset, $limit";
-			$st = $db->prepare($sql);
+			$st = $this->con->prepare($sql);
 			$st->execute();
 			$products = $st->fetchAll();
 			$db = null;
 			return $products;
 		}
-
 
 	}//end of class
  ?>

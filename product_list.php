@@ -16,8 +16,8 @@
 <body>
 	<div class="container">
 		<br>
-		<a href="index.php">Registration form</a>	|
-  		<a href="search.php">Search a user</a>	
+		<a href="index.php">Add a product </a>	|
+  		<a href="search_product.php">Search a product</a>	
   		<br><br>	
  		<h2>User list</h2>
  		<br>
@@ -51,12 +51,12 @@
 					<td><?php echo $p['product_created_ip'];?></td>
 					<td><?php echo $p['product_modified_ip'];?></td>
 					<td>
-						<a class="btn btn-info" href="update_user.php?id=<?php echo $u['user_id']?>">
+						<a class="btn btn-info" href="update_products.php?id=<?php echo $u['user_id']?>">
 				          <span class="glyphicon glyphicon-pencil"></span> Update
 				        </a>
 					</td>
 					<td>
-						<a class="btn btn-danger" href="delete.php?id=<?php echo $u['user_id']?>" onclick="confirm('Are you sure?'); ">
+						<a class="btn btn-danger" href="delete_product.php?id=<?php echo $u['user_id']?>" onclick="confirm('Are you sure?'); ">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 						</a>
 					</td>

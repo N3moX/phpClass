@@ -56,7 +56,6 @@
 
 <?php 
 	include('product.php');
-
 	$p = new Product();
 
 	//Assigning values
